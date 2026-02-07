@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Lovers+Quarrel&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Carta de San Valentín</title>
+  </head>
+
+  <body>
+    <!-- Pantalla inicial con el sobre -->
+    <div id="pantalla-inicial" class="pantalla-inicial">
+      <h1></h1>
+      <p class="psorpresa">Una pequeña sorpresa para ti...</p>
+
+      <div class="contenedor" id="AbrirContenedor">
+        <!-- Sombra del sobre -->
+        <div class="sombra-sobre"></div>
+        
+        <!-- Sobre -->
+        <div class="sobre-wrapper">
+          <div class="superior"></div>
+          <div class="hoja"></div>
+          <div class="carta">
+            <div class="etiquetas">
+              <p class="para">Para: Ale</p>
+              <p class="de">De: Leo</p>
+            </div>
+          </div>
+          
+          <!-- Sello de estrella -->
+          <div class="sello" id="Sello">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pantalla de videos (oculta inicialmente) -->
+    <div id="pantalla-videos" class="pantalla-videos oculta">
+      <!-- Contenedor del video -->
+      <div class="video-container">
+        <video id="video-carta" autoplay loop muted playsinline>
+          <source src="videos/1.mp4" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </div>
+
+      <!-- Botones de propuesta (solo visibles en página 2) -->
+      <div id="botones-propuesta" class="botones-propuesta oculta">
+        <button id="btn-propuesta-si" class="btn-valentine btn-si">Sí, por supuestoo! ❤️</button>
+        <button id="btn-propuesta-no" class="btn-valentine btn-no">No quiero 💔</button>
+      </div>
+
+      <!-- Botones de navegación -->
+      <div class="navegacion">
+        <button id="btn-anterior" class="btn-nav btn-anterior">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+          Anterior
+        </button>
+        
+        <span id="pagina-actual" class="pagina-actual">Página 1</span>
+        
+        <button id="btn-siguiente" class="btn-nav btn-siguiente">
+          Siguiente
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal de contraseña -->
+    <div id="modal-password" class="modal-password oculta">
+      <div class="modal-contenido">
+        <button id="cerrar-modal" class="cerrar-modal">&times;</button>
+        <h2>🔒 Sección Bloqueada</h2>
+        <p>Esta página está protegida. Ingresa la contraseña para continuar:</p>
+        <input type="password" id="input-password" placeholder="Contraseña" />
+        <button id="btn-verificar" class="btn-verificar">Desbloquear</button>
+        <p id="mensaje-error" class="mensaje-error oculta">❌ Contraseña incorrecta</p>
+      </div>
+    </div>
+
+    <!-- Modal de confirmación (para preguntar "¿Estás segura?") -->
+    <div id="modal-confirmacion" class="modal-valentine oculta">
+      <div class="modal-valentine-contenido">
+        <h2 id="confirmacion-pregunta">¿Estás segura?</h2>
+        <p id="confirmacion-subtitulo">Piénsalo bien...</p>
+        <div class="valentine-botones">
+          <button id="btn-confirmar-si" class="btn-valentine btn-si">Sí, estoy segura ❤️</button>
+          <button id="btn-confirmar-no" class="btn-valentine btn-no">Sí, estoy segura</button>
+        </div>
+        <p id="confirmacion-nota" class="valentine-nota oculta">No hay otra opción 😊</p>
+      </div>
+    </div>
+
+    <!-- Pantalla de aceptación con video y confeti -->
+    <div id="pantalla-aceptacion" class="pantalla-aceptacion oculta">
+      <video id="video-aceptacion" autoplay muted playsinline>
+        <source src="videos/4.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+      </video>
+      <canvas id="confeti-canvas"></canvas>
+    </div>
+
+    <!-- Contenedor de corazones -->
+    <div id="corazones-container"></div>
+
+    <!-- Audio de fondo -->
+    <audio id="background-music" loop>
+      <source src="music/Best.Part.mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
