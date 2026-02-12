@@ -476,9 +476,6 @@ window.addEventListener('load', () => {
 });
 
 function mostrarFinalCapitulo2() {
-    pantallaVideos.classList.add('oculta');
-    
-    // Redireccionar a la carpeta de flores
-    // Como la carpeta "flores" está al lado de este archivo, la ruta es simple:
-    window.location.href = './flores/index.html'; 
+    // Reemplaza 'tu-usuario' y 'nombre-repo' con los tuyos
+    window.location.href = 'https://charls-leo.github.io/Flores-Animadas/';
 }
