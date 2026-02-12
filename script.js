@@ -43,16 +43,22 @@ const ctx = confettiCanvas.getContext('2d');
 const backgroundMusic = document.getElementById('background-music');
 
 // ========== CONFIGURACIÓN ==========
-const PASSWORD_CORRECTA = "amor2025"; // Cambia esto por la contraseña que quieras
+const PASSWORD_CORRECTA = "030126"; // Cambia esto por la contraseña que quieras
 let paginaActualNum = 1;
-const totalPaginas = 3; // Ajusta según el número de videos que tengas
+const totalPaginas = 5; // Ajusta según el número de videos que tengas
 
 // Videos disponibles (ajusta las rutas según tu estructura)
 const videos = {
+    // CAPÍTULO 1
     1: "videos/1.mp4",
     2: "videos/3.mp4",
-    3: "videos/siguiente.mp4" // Video de la página 3 (bloqueada)
+
+    // CAPÍTULO 2
+    3: "videos/1-Cap2.mp4",
+    4: "videos/2-Cap2.mp4",
+    5: "videos/3-Cap2.mp4"
 };
+
 
 // Estado de confirmación para la pregunta de San Valentín
 let estadoConfirmacion = 0; // 0: inicial, 1-4: niveles de confirmación
@@ -181,15 +187,21 @@ function cambiarVideo(numeroPagina) {
 
 // ========== FUNCIÓN: ACTUALIZAR NAVEGACIÓN ==========
 function actualizarNavegacion() {
-    // Actualizar texto de página actual
+
     paginaActual.textContent = `Página ${paginaActualNum}`;
-    
-    // Deshabilitar botón anterior si estamos en la primera página
+
     btnAnterior.disabled = paginaActualNum === 1;
-    
-    // El botón siguiente siempre está habilitado (pero puede abrir modal)
+
+    // Si estamos en la última página del Cap 2
+    if (paginaActualNum === totalPaginas) {
+        btnSiguiente.textContent = "Final 🌸";
+    } else {
+        btnSiguiente.textContent = "Siguiente";
+    }
+
     btnSiguiente.disabled = false;
 }
+
 
 // ========== NAVEGACIÓN: PÁGINA ANTERIOR ==========
 btnAnterior.addEventListener('click', () => {
@@ -202,17 +214,27 @@ btnAnterior.addEventListener('click', () => {
 
 // ========== NAVEGACIÓN: PÁGINA SIGUIENTE ==========
 btnSiguiente.addEventListener('click', () => {
-    // Si estamos en la página 2, mostrar modal de contraseña
+
+    // Página 2 sigue teniendo contraseña
     if (paginaActualNum === 2) {
         mostrarModalPassword();
-    } 
-    // Si estamos en página 1, ir a página 2 sin problemas
-    else if (paginaActualNum < 2) {
+        return;
+    }
+
+    // Si es la última página (6) → aquí luego pondremos las flores
+    if (paginaActualNum === totalPaginas) {
+        mostrarFinalCapitulo2();
+        return;
+    }
+
+    // Avanzar normalmente
+    if (paginaActualNum < totalPaginas) {
         paginaActualNum++;
         cambiarVideo(paginaActualNum);
         actualizarNavegacion();
     }
 });
+
 
 // ========== MODAL DE CONTRASEÑA ==========
 function mostrarModalPassword() {
@@ -452,3 +474,11 @@ window.addEventListener('load', () => {
         }, i * 200);
     }
 });
+
+function mostrarFinalCapitulo2() {
+    pantallaVideos.classList.add('oculta');
+    
+    // Redireccionar a la carpeta de flores
+    // Como la carpeta "flores" está al lado de este archivo, la ruta es simple:
+    window.location.href = './flores/index.html'; 
+}
