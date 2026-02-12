@@ -787,17 +787,4 @@ h1 {
     display: block;
     height: 120px;
     }
-
-.hoja {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-left: 180px solid transparent;
-    border-right: 180px solid transparent;
-    border-top: 120px solid #000000; /* más oscurito */
-    border-bottom: 120px solid transparent;
-    z-index: 1;
-    }
-
-
 }
